@@ -370,7 +370,7 @@ export function ChatBot() {
                       Hello! 👋
                     </h3>
                     <p className="text-zinc-400 mb-6 max-w-md">
-                      I'm an AI assistant that knows everything about Harishraj Udaya Bhaskar. 
+                      I&apos;m an AI assistant that knows everything about Harishraj Udaya Bhaskar. 
                       Ask me about his experience, projects, skills, or anything else!
                     </p>
                     <div className="grid grid-cols-1 gap-2 w-full max-w-md">
@@ -466,7 +466,7 @@ export function ChatBot() {
                 
                 <div className="flex items-center justify-center gap-2 text-xs text-zinc-500">
                   <Sparkles className="w-3 h-3" />
-                  <span>Powered by AI • Answers from Harishraj's portfolio</span>
+                  <span>Powered by AI • Answers from Harishraj&apos;s portfolio</span>
                 </div>
                 <div className="flex items-center justify-center gap-1 mt-2 text-xs text-zinc-600">
                   <kbd className="px-2 py-1 bg-zinc-900 rounded border border-zinc-800">⌘</kbd>
