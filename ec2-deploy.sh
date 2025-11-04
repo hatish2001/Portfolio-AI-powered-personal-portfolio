@@ -20,16 +20,16 @@ if [ "$OS" = "ubuntu" ] || [ "$OS" = "debian" ]; then
     sudo apt update -y
     sudo apt install -y curl git
     
-    # Install Node.js 18+ (Ubuntu/Debian)
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+    # Install Node.js 20.x LTS (Ubuntu/Debian)
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
     sudo apt install -y nodejs
 elif [ "$OS" = "amzn" ] || [ "$OS" = "rhel" ] || [ "$OS" = "centos" ]; then
     echo "📦 Detected Amazon Linux/RHEL/CentOS. Using yum..."
     sudo yum update -y
     sudo yum install -y curl git
     
-    # Install Node.js 18+ (Amazon Linux/RHEL/CentOS)
-    curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+    # Install Node.js 20.x LTS (Amazon Linux/RHEL/CentOS)
+    curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
     sudo yum install -y nodejs
 else
     echo "⚠️  Unknown OS. Please install Node.js 18+ manually."
@@ -52,7 +52,7 @@ fi
 
 # Install dependencies
 echo "📥 Installing dependencies..."
-npm install
+npm install --legacy-peer-deps
 
 # Build the application
 echo "🔨 Building application..."
