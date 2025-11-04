@@ -135,8 +135,10 @@ export class RAGService {
         const impactText = exp.impact ? 
           ` Impact: ${Object.entries(exp.impact).map(([k, v]) => `${k}: ${v}`).join(', ')}` : '';
         const tagsText = exp.tags ? ` Tags: ${exp.tags.join(', ')}` : '';
+        const responsibilitiesText = exp.responsibilities ? exp.responsibilities.join(' ') : '';
+        const stackText = exp.stack ? exp.stack.join(', ') : '';
         contexts.push(
-          `${exp.role} at ${exp.company} (${exp.period})${tagsText}. ${exp.responsibilities.join(' ')} Tech Stack: ${exp.stack.join(', ')}.${impactText}`
+          `${exp.role} at ${exp.company} (${exp.period})${tagsText}. ${responsibilitiesText} Tech Stack: ${stackText}.${impactText}`
         );
       });
     }
