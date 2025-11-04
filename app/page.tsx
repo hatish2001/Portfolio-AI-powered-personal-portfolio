@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Header } from '@/components/Header';
 import { HeroEnhanced } from '@/components/HeroEnhanced';
@@ -14,7 +14,7 @@ import { contentData } from '@/lib/data';
 import { trackEvent } from '@/lib/analytics';
 import type { ContentItem, ContentSection } from '@/types/content';
 
-export default function HomePage() {
+function HomePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedItem, setSelectedItem] = useState<ContentItem | null>(null);
@@ -106,5 +106,17 @@ export default function HomePage() {
         onClose={handleModalClose}
       />
     </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    }>
+      <HomePageContent />
+    </Suspense>
   );
 }
