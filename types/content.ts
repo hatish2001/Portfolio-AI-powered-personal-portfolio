@@ -68,7 +68,12 @@ export interface AboutData {
   bio: string;
   photo: string;
   skills: Record<string, string[]>;
-  contact: Record<string, string>;
+  contact: {
+    email: string;
+    github: string;
+    linkedin: string;
+    phone?: string;
+  };
   resumeUrl?: string;
 }
 
