@@ -5,9 +5,8 @@ This guide will help you deploy your Next.js portfolio to AWS EC2.
 ## Prerequisites
 
 - AWS Account
-- EC2 instance created (Ubuntu 22.04 LTS or Amazon Linux 2023 recommended)
+- EC2 instance created
 - SSH access to your EC2 instance
-- Node.js 20.x LTS (will be installed by script)
 
 ## Step 1: Create EC2 Instance
 
@@ -51,14 +50,9 @@ chmod +x ec2-deploy.sh
 ### Option B: Manual Steps
 
 ```bash
-# 1. Install Node.js 20.x LTS
-# For Ubuntu/Debian:
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# For Amazon Linux/RHEL/CentOS:
-# curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo bash -
-# sudo yum install -y nodejs
+# 1. Install Node.js
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
 
 # 2. Install PM2 (process manager)
 sudo npm install -g pm2
@@ -68,7 +62,7 @@ git clone https://github.com/hatish2001/AIPortfolio.git
 cd AIPortfolio
 
 # 4. Install dependencies
-npm install --legacy-peer-deps
+npm install
 
 # 5. Create .env file with your API keys
 nano .env
@@ -187,7 +181,7 @@ pm2 monit
 ### Application crashes
 - Check logs: `pm2 logs portfolio`
 - Verify `.env` file has correct API keys
-- Check Node.js version: `node --version` (should be 20.x)
+- Check Node.js version: `node --version` (should be 18+)
 
 ### Build fails
 - Check Node.js version

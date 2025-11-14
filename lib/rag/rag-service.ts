@@ -135,10 +135,8 @@ export class RAGService {
         const impactText = exp.impact ? 
           ` Impact: ${Object.entries(exp.impact).map(([k, v]) => `${k}: ${v}`).join(', ')}` : '';
         const tagsText = exp.tags ? ` Tags: ${exp.tags.join(', ')}` : '';
-        const responsibilitiesText = exp.responsibilities ? exp.responsibilities.join(' ') : '';
-        const stackText = exp.stack ? exp.stack.join(', ') : '';
         contexts.push(
-          `${exp.role} at ${exp.company} (${exp.period})${tagsText}. ${responsibilitiesText} Tech Stack: ${stackText}.${impactText}`
+          `${exp.role} at ${exp.company} (${exp.period})${tagsText}. ${exp.responsibilities.join(' ')} Tech Stack: ${exp.stack.join(', ')}.${impactText}`
         );
       });
     }
@@ -146,9 +144,8 @@ export class RAGService {
     // Projects
     if (queryLower.includes('project') || queryLower.includes('built') || queryLower.includes('app')) {
       contentData.apps.forEach((app) => {
-        const techText = app.tech ? app.tech.join(', ') : '';
         contexts.push(
-          `Project: ${app.title} - ${app.shortDescription}.${techText ? ` Tech: ${techText}.` : ''} ${app.myContribution || ''}`
+          `Project: ${app.title} - ${app.shortDescription}. Tech: ${app.tech.join(', ')}. ${app.myContribution}`
         );
       });
     }
@@ -156,9 +153,8 @@ export class RAGService {
     // Education
     if (queryLower.includes('education') || queryLower.includes('degree') || queryLower.includes('university')) {
       contentData.education.forEach((edu) => {
-        const coursesText = edu.courses ? edu.courses.join(', ') : '';
         contexts.push(
-          `Education: ${edu.degreeLevel} in ${edu.program} from ${edu.institution} (${edu.period}).${coursesText ? ` Courses: ${coursesText}.` : ''}`
+          `Education: ${edu.degreeLevel} in ${edu.program} from ${edu.institution} (${edu.period}). Courses: ${edu.courses.join(', ')}.`
         );
       });
     }
